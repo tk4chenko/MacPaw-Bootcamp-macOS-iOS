@@ -20,31 +20,33 @@ final class MainViewModel {
         
         var losses: [Loss] = []
         
+        var loss = Loss()
+        
         for equipmentItem in equipmentData {
-            var loss = Loss()
+            
             loss.date = equipmentItem.date ?? ""
             loss.day = equipmentItem.day ?? 0
             
-            loss.losses["Aircraft"] = equipmentItem.aircraft
-            loss.losses["Anti-Aircraft Warfare"] = equipmentItem.antiAircraftWarfare
-            loss.losses["APC"] = equipmentItem.apc
-            loss.losses["Drone"] = equipmentItem.drone
-            loss.losses["Field Artillery"] = equipmentItem.fieldArtillery
-            loss.losses["Fuel Tank"] = equipmentItem.fuelTank
-            loss.losses["Helicopter"] = equipmentItem.helicopter
-            loss.losses["Military Auto"] = equipmentItem.militaryAuto
-            loss.losses["MRL"] = equipmentItem.mrl
-            loss.losses["Naval Ship"] = equipmentItem.navalShip
-            loss.losses["Tank"] = equipmentItem.tank
+            loss.equipment["Aircraft"] = equipmentItem.aircraft
+            loss.equipment["Anti-Aircraft Warfare"] = equipmentItem.antiAircraftWarfare
+            loss.equipment["APC"] = equipmentItem.apc
+            loss.equipment["Drone"] = equipmentItem.drone
+            loss.equipment["Field Artillery"] = equipmentItem.fieldArtillery
+            loss.equipment["Fuel Tank"] = equipmentItem.fuelTank
+            loss.equipment["Helicopter"] = equipmentItem.helicopter
+            loss.equipment["Military Auto"] = equipmentItem.militaryAuto
+            loss.equipment["MRL"] = equipmentItem.mrl
+            loss.equipment["Naval Ship"] = equipmentItem.navalShip
+            loss.equipment["Tank"] = equipmentItem.tank
             
             losses.append(loss)
         }
         
-        for personnelItem in personnelData {
-            if let index = losses.firstIndex(where: { $0.date == personnelItem.date }) {
-                losses[index].losses["Personnel"] = personnelItem.personnel
+        for (index, personnelItem) in personnelData.enumerated() {
+            if index < losses.count {
+                losses[index].personnel = personnelItem.personnel ?? 0
             }
         }
-        return losses
+        return losses.reversed()
     }
 }

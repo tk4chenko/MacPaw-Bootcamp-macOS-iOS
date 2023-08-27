@@ -25,6 +25,19 @@
 		4E38CB492A9A519D003294DC /* Loss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB482A9A519D003294DC /* Loss.swift */; };
 		4E38CB4D2A9A51FD003294DC /* Personnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB4C2A9A51FD003294DC /* Personnel.swift */; };
 		4E38CB4F2A9A5225003294DC /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB4E2A9A5225003294DC /* Equipment.swift */; };
+		4E38CB512A9AA758003294DC /* MainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB502A9AA758003294DC /* MainHeader.swift */; };
+		4E38CB532A9AA794003294DC /* IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB522A9AA794003294DC /* IdentifiableCell.swift */; };
+		4E38CB572A9AA823003294DC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB552A9AA823003294DC /* WebViewController.swift */; };
+		4E38CB582A9AA823003294DC /* WebViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB562A9AA823003294DC /* WebViewCoordinator.swift */; };
+		4E38CB5A2A9AA8AE003294DC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB592A9AA8AE003294DC /* CustomButton.swift */; };
+		4E38CB5C2A9AA90D003294DC /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB5B2A9AA90D003294DC /* UIStackView + Extension.swift */; };
+		4E38CB5F2A9AA937003294DC /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB5E2A9AA937003294DC /* UILabel + Extension.swift */; };
+		4E38CB612A9AA9BA003294DC /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38CB602A9AA9BA003294DC /* UIImageView + Extension.swift */; };
+		4E4497F22A9B627F00FE6FBE /* LossTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4497F12A9B627F00FE6FBE /* LossTableViewCell.swift */; };
+		4E4497F42A9B679000FE6FBE /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4497F32A9B679000FE6FBE /* String + Extension.swift */; };
+		4E4497F62A9B90B900FE6FBE /* EquipmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4497F52A9B90B900FE6FBE /* EquipmentTableViewCell.swift */; };
+		4E4497F82A9B944000FE6FBE /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4497F72A9B944000FE6FBE /* UIColor + Extension.swift */; };
+		4E4497FA2A9B979100FE6FBE /* WebViewURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4497F92A9B979100FE6FBE /* WebViewURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +61,19 @@
 		4E38CB482A9A519D003294DC /* Loss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loss.swift; sourceTree = "<group>"; };
 		4E38CB4C2A9A51FD003294DC /* Personnel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personnel.swift; sourceTree = "<group>"; };
 		4E38CB4E2A9A5225003294DC /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
+		4E38CB502A9AA758003294DC /* MainHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHeader.swift; sourceTree = "<group>"; };
+		4E38CB522A9AA794003294DC /* IdentifiableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiableCell.swift; sourceTree = "<group>"; };
+		4E38CB552A9AA823003294DC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		4E38CB562A9AA823003294DC /* WebViewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewCoordinator.swift; sourceTree = "<group>"; };
+		4E38CB592A9AA8AE003294DC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		4E38CB5B2A9AA90D003294DC /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
+		4E38CB5E2A9AA937003294DC /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		4E38CB602A9AA9BA003294DC /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
+		4E4497F12A9B627F00FE6FBE /* LossTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossTableViewCell.swift; sourceTree = "<group>"; };
+		4E4497F32A9B679000FE6FBE /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		4E4497F52A9B90B900FE6FBE /* EquipmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentTableViewCell.swift; sourceTree = "<group>"; };
+		4E4497F72A9B944000FE6FBE /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		4E4497F92A9B979100FE6FBE /* WebViewURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewURL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				4E38CB302A9A4E54003294DC /* MainScene */,
+				4E38CB542A9AA823003294DC /* WebViewScene */,
 				4E38CB372A9A503F003294DC /* Coordinators */,
 				4E38CB282A9A4E2F003294DC /* Helpers */,
 				4E38CB342A9A4F22003294DC /* Extensions */,
@@ -105,6 +132,7 @@
 		4E38CB282A9A4E2F003294DC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4E38CB522A9AA794003294DC /* IdentifiableCell.swift */,
 				4E38CB292A9A4E2F003294DC /* Constants.swift */,
 				4E38CB2A2A9A4E2F003294DC /* JSONLoader.swift */,
 			);
@@ -123,8 +151,8 @@
 		4E38CB2E2A9A4E47003294DC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4E38CB0B2A9A4C68003294DC /* MainViewController.swift */,
-				4E38CB3F2A9A504E003294DC /* DetailViewController.swift */,
+				4E4497FB2A9B982F00FE6FBE /* Main */,
+				4E4497FC2A9B984400FE6FBE /* Detail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +190,11 @@
 			isa = PBXGroup;
 			children = (
 				4E38CB352A9A4F32003294DC /* Date + Extension.swift */,
+				4E38CB5B2A9AA90D003294DC /* UIStackView + Extension.swift */,
+				4E38CB5E2A9AA937003294DC /* UILabel + Extension.swift */,
+				4E38CB602A9AA9BA003294DC /* UIImageView + Extension.swift */,
+				4E4497F32A9B679000FE6FBE /* String + Extension.swift */,
+				4E4497F72A9B944000FE6FBE /* UIColor + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -181,6 +214,36 @@
 				4E38CB3A2A9A503F003294DC /* Coordinator.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		4E38CB542A9AA823003294DC /* WebViewScene */ = {
+			isa = PBXGroup;
+			children = (
+				4E38CB552A9AA823003294DC /* WebViewController.swift */,
+				4E38CB562A9AA823003294DC /* WebViewCoordinator.swift */,
+				4E4497F92A9B979100FE6FBE /* WebViewURL.swift */,
+			);
+			path = WebViewScene;
+			sourceTree = "<group>";
+		};
+		4E4497FB2A9B982F00FE6FBE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4E38CB502A9AA758003294DC /* MainHeader.swift */,
+				4E38CB0B2A9A4C68003294DC /* MainViewController.swift */,
+				4E4497F12A9B627F00FE6FBE /* LossTableViewCell.swift */,
+				4E38CB592A9AA8AE003294DC /* CustomButton.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		4E4497FC2A9B984400FE6FBE /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				4E4497F52A9B90B900FE6FBE /* EquipmentTableViewCell.swift */,
+				4E38CB3F2A9A504E003294DC /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,19 +318,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E4497F62A9B90B900FE6FBE /* EquipmentTableViewCell.swift in Sources */,
 				4E38CB0C2A9A4C68003294DC /* MainViewController.swift in Sources */,
+				4E38CB532A9AA794003294DC /* IdentifiableCell.swift in Sources */,
+				4E4497F82A9B944000FE6FBE /* UIColor + Extension.swift in Sources */,
+				4E38CB612A9AA9BA003294DC /* UIImageView + Extension.swift in Sources */,
+				4E38CB512A9AA758003294DC /* MainHeader.swift in Sources */,
+				4E38CB5F2A9AA937003294DC /* UILabel + Extension.swift in Sources */,
+				4E38CB5C2A9AA90D003294DC /* UIStackView + Extension.swift in Sources */,
 				4E38CB3E2A9A504A003294DC /* MainCoordinator.swift in Sources */,
 				4E38CB4F2A9A5225003294DC /* Equipment.swift in Sources */,
 				4E38CB4D2A9A51FD003294DC /* Personnel.swift in Sources */,
+				4E4497FA2A9B979100FE6FBE /* WebViewURL.swift in Sources */,
 				4E38CB402A9A504E003294DC /* DetailViewController.swift in Sources */,
 				4E38CB082A9A4C68003294DC /* AppDelegate.swift in Sources */,
 				4E38CB3B2A9A503F003294DC /* AppCoordinator.swift in Sources */,
 				4E38CB492A9A519D003294DC /* Loss.swift in Sources */,
 				4E38CB362A9A4F32003294DC /* Date + Extension.swift in Sources */,
 				4E38CB3C2A9A503F003294DC /* Coordinator.swift in Sources */,
+				4E38CB572A9AA823003294DC /* WebViewController.swift in Sources */,
 				4E38CB2C2A9A4E2F003294DC /* JSONLoader.swift in Sources */,
+				4E38CB582A9AA823003294DC /* WebViewCoordinator.swift in Sources */,
+				4E4497F22A9B627F00FE6FBE /* LossTableViewCell.swift in Sources */,
 				4E38CB2B2A9A4E2F003294DC /* Constants.swift in Sources */,
 				4E38CB0A2A9A4C68003294DC /* SceneDelegate.swift in Sources */,
+				4E38CB5A2A9AA8AE003294DC /* CustomButton.swift in Sources */,
+				4E4497F42A9B679000FE6FBE /* String + Extension.swift in Sources */,
 				4E38CB1C2A9A4D26003294DC /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

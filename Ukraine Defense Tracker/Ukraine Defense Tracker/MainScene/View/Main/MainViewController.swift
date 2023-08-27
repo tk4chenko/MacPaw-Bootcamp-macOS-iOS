@@ -9,7 +9,9 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    var openDetailsScreen: ((Int, Int) -> Void)?
+    var openDetailsScreen: ((Loss)->Void)?
+    
+    var openWebViewController: ((WebViewURL)->Void)?
     
     private var selectedDate = Date(dateString: "2023-08-10")
     
@@ -19,6 +21,11 @@ final class MainViewController: UIViewController {
         $0.frame = view.bounds
         $0.dataSource = self
         $0.delegate = self
+        $0.sectionHeaderTopPadding = 0
+        $0.separatorStyle = .none
+        $0.backgroundColor = .clear
+        $0.register(LossTableViewCell.self, forCellReuseIdentifier: LossTableViewCell.identifier)
+        $0.register(MainHeader.self, forHeaderFooterViewReuseIdentifier: MainHeader.identifier)
         return $0
     }(UITableView())
     
@@ -33,13 +40,13 @@ final class MainViewController: UIViewController {
         $0.textAlignment = .center
         $0.isHidden = true
         $0.frame = view.bounds
-        $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        $0.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return $0
     }(UILabel())
     
     private let leftItemLabel: UILabel = {
         $0.text = "Glory to Ukraine 🇺🇦"
-        $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        $0.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return $0
     }(UILabel())
     
@@ -59,11 +66,14 @@ final class MainViewController: UIViewController {
     }
     
     private func setupUI() {
+        view.backgroundColor = .white
         datePicker.date = selectedDate
         let leftItem = UIBarButtonItem(customView: leftItemLabel)
         navigationItem.leftBarButtonItem = leftItem
         let rightItem = UIBarButtonItem(customView: datePicker)
         navigationItem.rightBarButtonItem = rightItem
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .black
         view.addSubview(tableView)
         view.addSubview(noDataLabel)
     }
@@ -72,35 +82,54 @@ final class MainViewController: UIViewController {
         selectedDate = sender.date
         if let losses = viewModel.losses, losses.contains(where: { $0.date == selectedDate.formatToString() }) {
             noDataLabel.isHidden = true
+            tableView.isHidden = false
         } else {
             noDataLabel.isHidden = false
+            tableView.isHidden = true
         }
-        tableView.reloadData()
+        if let index = viewModel.losses?.firstIndex(where: { $0.date == selectedDate.formatToString() }) {
+            tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
+        }
     }
 
 }
 
 extension MainViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        120
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.losses?.first(where: { $0.date == selectedDate.formatToString() })?.losses.count ?? 0
+        return viewModel.losses?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let item = viewModel.losses?.first(where: { $0.date == selectedDate.formatToString() })?.losses.sorted(by: { $0.key < $1.key })[indexPath.row]
-        cell.textLabel?.text = item?.key
-        cell.accessoryType = .disclosureIndicator
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LossTableViewCell.identifier) as? LossTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
+        if let loss = viewModel.losses?[indexPath.row] {
+            cell.setupCell(with: loss)
+        }
         return cell
     }
     
 }
 
 extension MainViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let item = viewModel.losses?.first(where: { $0.date == selectedDate.formatToString() })?.losses.sorted(by: { $0.key < $1.key })[indexPath.row],
-           let day = viewModel.losses?.first(where: { $0.date == selectedDate.formatToString() })?.day {
-            openDetailsScreen?(item.value, day)
+        if let loss = viewModel.losses?[indexPath.row] {
+            self.openDetailsScreen?(loss)
         }
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        75
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: MainHeader.identifier ) as? MainHeader else { return nil}
+        headerView.openWebViewController = { [weak self] path in
+            self?.openWebViewController?(path)
+        }
+        return headerView
     }
 }

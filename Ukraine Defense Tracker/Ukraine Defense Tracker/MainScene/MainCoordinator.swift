@@ -25,19 +25,25 @@ final class MainCoordinator: Coordinator {
     
     func openMainViewController() {
         let viewModel = MainViewModel()
-        let viewContoller = MainViewController(viewModel: viewModel)
-        viewContoller.openDetailsScreen = { [weak self] losses, day in
-            self?.openDetailsViewController((losses, day))
+        let viewController = MainViewController(viewModel: viewModel)
+        viewController.openDetailsScreen = { [weak self] loss in
+            self?.openDetailsViewController(loss)
         }
-        self.navigationController.pushViewController(viewContoller, animated: true)
+        viewController.openWebViewController = { [weak self] path in
+            self?.openWebViewController(with: path)
+        }
+        self.navigationController.pushViewController(viewController, animated: true)
     }
     
-    func openDetailsViewController(_ data: (Int, Int)) {
-        let viewController = DetailViewController(overview: "\(data.0) units were destroyed during \(data.1) days of war.")
-        if let sheet = viewController.sheetPresentationController {
-            sheet.prefersGrabberVisible = true
-                sheet.detents = [.medium()]
-        }
-        navigationController.present(viewController, animated: true, completion: nil)
+    func openDetailsViewController(_ loss: Loss) {
+        let viewController = DetailViewController()
+        viewController.loss = loss
+        self.navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func openWebViewController(with path: WebViewURL) {
+        let coordinator = WebViewCoordinator(navigationController: navigationController, path: path)
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }

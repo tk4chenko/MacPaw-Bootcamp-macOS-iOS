@@ -10,5 +10,6 @@ import Foundation
 struct Loss {
     var date: String = ""
     var day: Int = 0
-    var losses: [String: Int] = [:]
+    var personnel: Int = 0
+    var equipment: [String: Int] = [:]
 }

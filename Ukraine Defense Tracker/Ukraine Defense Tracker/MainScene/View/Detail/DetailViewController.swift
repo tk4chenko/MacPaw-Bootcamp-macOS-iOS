@@ -11,9 +11,9 @@ final class DetailViewController: UIViewController {
     
     let loss: Loss
     
-    init(loss: Loss) {
+    required init(loss: Loss) {
         self.loss = loss
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {

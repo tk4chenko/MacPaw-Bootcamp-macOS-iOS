@@ -9,11 +9,11 @@ import UIKit
 
 final class WebViewCoordinator: Coordinator {
     
-    let navigationController: UINavigationController
+    private let navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     weak var parentCoordinator: Coordinator?
     
-    var path: WebViewURL
+    private let path: WebViewURL
     
     init(navigationController: UINavigationController, path: WebViewURL) {
         self.navigationController = navigationController

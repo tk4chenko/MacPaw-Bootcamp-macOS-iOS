@@ -1,5 +1,5 @@
 //
-//  Date + Extension.swift
+//  Date+Extension.swift
 //  Ukraine Defense Tracker
 //
 //  Created by Artem Tkachenko on 26.08.2023.
@@ -8,11 +8,6 @@
 import Foundation
 
 extension Date {
-    func formatToString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: self)
-    }
     
     init(dateString: String) {
         let dateFormatter = DateFormatter()
@@ -23,5 +18,11 @@ extension Date {
         } else {
             self = Date()
         }
+    }
+    
+    func formatToString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
     }
 }

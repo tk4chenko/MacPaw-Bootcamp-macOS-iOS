@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class Constants {
-    class JSON {
+struct Constants {
+    struct JSON {
         static let personnel = "russia_losses_personnel.json"
         static let equipment = "russia_losses_equipment.json"
     }

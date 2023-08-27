@@ -14,11 +14,12 @@ final class WebViewController: UIViewController {
     
     private let loadingIndicator = UIActivityIndicatorView(style: .medium)
     
-    init(url: WebViewURL) {
+    required init(url: WebViewURL) {
         self.url = url.initializeURL()
         super.init(nibName: nil, bundle: nil)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -48,7 +49,7 @@ final class WebViewController: UIViewController {
         let config = WKWebViewConfiguration()
         config.defaultWebpagePreferences = preferenses
         let webView = WKWebView(frame: .zero, configuration: config)
-        webView.navigationDelegate = self // Set navigation delegate to self
+        webView.navigationDelegate = self
         return webView
     }
     
@@ -64,7 +65,6 @@ final class WebViewController: UIViewController {
 
 extension WebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        // Web view finished loading, hide the loading indicator
         loadingIndicator.stopAnimating()
     }
 }

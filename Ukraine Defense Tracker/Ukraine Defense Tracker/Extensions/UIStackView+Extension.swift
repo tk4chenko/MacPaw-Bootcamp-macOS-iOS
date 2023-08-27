@@ -1,5 +1,5 @@
 //
-//  UIStackView + Extension.swift
+//  UIStackView+Extension.swift
 //  Ukraine Defense Tracker
 //
 //  Created by Artem Tkachenko on 27.08.2023.

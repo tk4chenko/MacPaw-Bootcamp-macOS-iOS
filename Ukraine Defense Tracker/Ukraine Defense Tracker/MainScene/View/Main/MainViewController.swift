@@ -9,13 +9,9 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    var openDetailsScreen: ((Loss)->Void)?
+    private var selectedDate = Date(dateString: MainTitle.selectedDate.description)
     
-    var openWebViewController: ((WebViewURL)->Void)?
-    
-    private var selectedDate = Date(dateString: "2023-08-10")
-    
-    private let viewModel: MainViewModel
+    let viewModel: MainViewModelProtocol
     
     private lazy var tableView: UITableView = {
         $0.frame = view.bounds
@@ -31,12 +27,12 @@ final class MainViewController: UIViewController {
     
     private lazy var datePicker: UIDatePicker = {
         $0.datePickerMode = .date
-        $0.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .editingDidEnd)
+        $0.addTarget(self, action: #selector(datePickerValueChanged), for: .editingDidEnd)
         return $0
     }(UIDatePicker())
     
     private lazy var noDataLabel: UILabel = {
-        $0.text = "No data for this date"
+        $0.text = MainTitle.noDataTitle.description
         $0.textAlignment = .center
         $0.isHidden = true
         $0.frame = view.bounds
@@ -44,17 +40,19 @@ final class MainViewController: UIViewController {
         return $0
     }(UILabel())
     
-    private let leftItemLabel: UILabel = {
-        $0.text = "Glory to Ukraine 🇺🇦"
-        $0.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        return $0
-    }(UILabel())
+    private let leftItemLabel = UILabel(
+        text: MainTitle.leftItemTitle.description,
+        textColor: .black,
+        fontSize: 18,
+        fontWeight: .semibold
+    )
     
-    init(viewModel: MainViewModel) {
+    required init(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -91,45 +89,19 @@ final class MainViewController: UIViewController {
             tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
         }
     }
-
 }
 
-extension MainViewController: UITableViewDataSource {
+private enum MainTitle {
+    case selectedDate, noDataTitle, leftItemTitle
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        120
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.losses?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LossTableViewCell.identifier) as? LossTableViewCell else { return UITableViewCell() }
-        cell.selectionStyle = .none
-        if let loss = viewModel.losses?[indexPath.row] {
-            cell.setupCell(with: loss)
+    var description: String {
+        switch self {
+        case .selectedDate:
+            return "2023-08-10"
+        case .noDataTitle:
+            return "No data for this date"
+        case .leftItemTitle:
+            return "Glory to Ukraine 🇺🇦"
         }
-        return cell
-    }
-    
-}
-
-extension MainViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let loss = viewModel.losses?[indexPath.row] {
-            self.openDetailsScreen?(loss)
-        }
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        75
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: MainHeader.identifier ) as? MainHeader else { return nil}
-        headerView.openWebViewController = { [weak self] path in
-            self?.openWebViewController?(path)
-        }
-        return headerView
     }
 }

@@ -25,19 +25,15 @@ final class MainCoordinator: Coordinator {
     
     func openMainViewController() {
         let viewModel = MainViewModel()
+        viewModel.coordinatorDelegate = self
         let viewController = MainViewController(viewModel: viewModel)
-        viewController.openDetailsScreen = { [weak self] loss in
-            self?.openDetailsViewController(loss)
-        }
-        viewController.openWebViewController = { [weak self] path in
-            self?.openWebViewController(with: path)
-        }
         self.navigationController.pushViewController(viewController, animated: true)
     }
-    
+}
+
+extension MainCoordinator: MainCoordinatorDelegate {
     func openDetailsViewController(_ loss: Loss) {
-        let viewController = DetailViewController()
-        viewController.loss = loss
+        let viewController = DetailViewController(loss: loss)
         self.navigationController.pushViewController(viewController, animated: true)
     }
     

@@ -9,7 +9,16 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
-    var loss: Loss?
+    let loss: Loss
+    
+    init(loss: Loss) {
+        self.loss = loss
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var tableView: UITableView = {
         $0.frame = view.bounds
@@ -27,39 +36,9 @@ final class DetailViewController: UIViewController {
         setupUI()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        setupConstraints()
-    }
-    
     private func setupUI() {
         title = "Equipment losses"
         view.backgroundColor = .white
         view.addSubview(tableView)
-    }
-    
-    private func setupConstraints() {
-        
-    }
-}
-
-extension DetailViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        loss?.equipment.keys.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: EquipmentTableViewCell.identifier) as? EquipmentTableViewCell else { return UITableViewCell() }
-        if let item = loss?.equipment.sorted(by: { $0.key < $1.key })[indexPath.row] {
-            cell.setupCell(with: (item.key, item.value))
-        }
-        return cell
-    }
-}
-
-extension DetailViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
     }
 }

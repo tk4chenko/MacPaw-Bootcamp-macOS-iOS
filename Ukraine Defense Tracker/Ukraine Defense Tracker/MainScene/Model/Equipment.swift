@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Equipment: Codable {
+struct Equipment: Decodable {
     let date: String?
     let day, aircraft, helicopter, tank: Int?
     let apc, fieldArtillery, mrl, militaryAuto: Int?

@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol AppCoordinatorProtocol: Coordinator {
-    var window: UIWindow { get }
-    func openMainScene()
-}
-
 final class AppCoordinator: AppCoordinatorProtocol {
     
     weak var parentCoordinator: Coordinator?

@@ -7,14 +7,21 @@
 
 import Foundation
 
-final class MainViewModel {
+protocol MainCoordinatorDelegate: AnyObject {
+    func openWebViewController(with path: WebViewURL)
+    func openDetailsViewController(_ loss: Loss)
+}
+
+final class MainViewModel: MainViewModelProtocol {
     var losses: [Loss]?
     
     func loadData() {
         losses = loadEquipmentAndPersonnel()
     }
     
-    func loadEquipmentAndPersonnel() -> [Loss] {
+    weak var coordinatorDelegate: MainCoordinatorDelegate?
+    
+    private func loadEquipmentAndPersonnel() -> [Loss] {
         let equipmentData: [Equipment] = JSONLoader.load(Constants.JSON.equipment)
         let personnelData: [Personnel] = JSONLoader.load(Constants.JSON.personnel)
         
@@ -48,5 +55,13 @@ final class MainViewModel {
             }
         }
         return losses.reversed()
+    }
+    
+    func openDetailsViewController(_ loss: Loss) {
+        coordinatorDelegate?.openDetailsViewController(loss)
+    }
+    
+    func openWebViewController(with path: WebViewURL) {
+        coordinatorDelegate?.openWebViewController(with: path)
     }
 }
